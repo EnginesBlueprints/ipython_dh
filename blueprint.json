@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-02-18T09:37:00+11:00"
+    "timestamp": "2019-02-18T10:41:24+11:00"
   },
   "software": {
     "base": {
@@ -121,7 +121,7 @@
         ],
         "script": {
           "language": "sh",
-          "content": "#!/bin/sh\r\n/home/app/.local/bin/pip3.7 install  $module --user\r\n"
+          "content": "#!/bin/sh\r\n/home/app/.local/bin/pip3.7 install --upgrade  $module --user\r\n"
         }
       },
       {
