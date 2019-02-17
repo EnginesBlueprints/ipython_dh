@@ -11,17 +11,23 @@
     "blueprint": {
       "version": {
         "major": 0,
-        "minor": 0,
+        "minor": 1,
         "level": "alpha",
         "patch": 0
       }
     },
     "software": {
       "display": {
-        "title": "Ipython base for DH"
+        "title": "Ipython base for DH",
+        "description": "IPython provides a rich architecture for interactive computing with",
+        "url": "http://ipython.org/"
+      },
+      "license": {
+        "label": "BSD 3 Clause",
+        "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-02-17T21:40:35+11:00"
+    "timestamp": "2019-02-17T22:56:20+11:00"
   },
   "software": {
     "base": {
@@ -82,6 +88,22 @@
           "type": "text",
           "label": "python modules to install seperated by a space"
         }
+      },
+      {
+        "name": "HOME",
+        "value": "/home/app",
+        "immutable": true,
+        "input": {
+          "type": "hidden"
+        }
+      },
+      {
+        "name": "notebook_password ",
+        "mandatory": true,
+        "ask_at_build_time": true,
+        "input": {
+          "type": "password_with_confirmation"
+        }
       }
     ],
     "actionators": [
@@ -107,6 +129,13 @@
         ],
         "script": {
           "content": "#!/bin/sh\r\n\r\n  pass=`echo \"from IPython.lib import passwd\r\n  passwd('$notebook_password')\r\n  exit() \" | ipython3  --no-confirm-exit --no-color-info --no-pprint --colors=NoColor |grep sha1 | sed \"/.*sha/s//\\'sha/\"`\r\n  cat ~/.ipython/profile_nbserver/ipython_notebook_config.py | sed \"/^# c.NotebookApp.password.*/s//c.NotebookApp.password=$pass/\" > /tmp/confg\r\n  cp /tmp/confg ~/.ipython/profile_nbserver/ipython_notebook_config.py\r\n echo -n $pass > /home/app/.pass\r\n  echo -n $notebook_password > /home/app/.notebook_password"
+        }
+      },
+      {
+        "name": "show_token",
+        "return_type": "plain_text",
+        "script": {
+          "content": "#!/bin/sh\r\ncat /home/app/.local/share/jupyter/runtime/notebook_cookie_secret"
         }
       }
     ]
