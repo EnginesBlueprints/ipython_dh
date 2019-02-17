@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-02-17T22:56:20+11:00"
+    "timestamp": "2019-02-17T23:19:08+11:00"
   },
   "software": {
     "base": {
@@ -75,7 +75,7 @@
         "type_path": "database/nosql/mongo",
         "variables": {
           "db_password": "_Engines_System(random(10))",
-          "db_username": "_Engines_Builder(engine_name) ",
+          "db_username": "_Engines_Builder(engine_name)",
           "database_name": "_Engines_Builder(engine_name)",
           "database_host": "_Engines_System(mongo_host)"
         }
