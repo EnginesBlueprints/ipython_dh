@@ -21,15 +21,14 @@
         "title": "Ipython base for DH"
       }
     },
-    "timestamp": "2019-02-17T20:31:18+11:00"
+    "timestamp": "2019-02-17T21:07:54+11:00"
   },
   "software": {
     "base": {
       "name": "ipjn",
-      "inherit": "https://raw.githubusercontent.com/EnginesBlueprints/ipython_notebook/master/blueprint.json",
       "framework": "python",
       "deployment_type": "web",
-      "http_protocol": "https_and_http",
+      "http_protocol": "https_only",
       "framework_port_override": 8888,
       "memory": {
         "required": 512,
