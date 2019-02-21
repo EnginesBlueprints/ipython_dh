@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-02-21T13:48:35+11:00"
+    "timestamp": "2019-02-22T10:28:33+11:00"
   },
   "software": {
     "base": {
@@ -54,6 +54,32 @@
       },
       {
         "package": "python-matplotlib"
+      }
+    ],
+    "required_modules": [
+      {
+        "name": "jsonschema",
+        "type": "python"
+      },
+      {
+        "name": "ipython",
+        "type": "python"
+      },
+      {
+        "name": "jupyter",
+        "type": "python"
+      },
+      {
+        "name": "https://download.pytorch.org/whl/cpu/torch-1.0.1.post2-cp37-cp37m-linux_x86_64.whl",
+        "type": "python"
+      },
+      {
+        "name": "torchvision",
+        "type": "python"
+      },
+      {
+        "name": "flair",
+        "type": "python"
       }
     ],
     "service_configurations": [
