@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-02-27T11:00:35+11:00"
+    "timestamp": "2019-02-27T11:40:09+11:00"
   },
   "software": {
     "base": {
@@ -63,6 +63,9 @@
       },
       {
         "package": "libxslt1.1"
+      },
+      {
+        "package": "python3.7-dev"
       }
     ],
     "required_modules": [
