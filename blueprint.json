@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-03-01T11:25:09+11:00"
+    "timestamp": "2019-03-01T12:46:55+11:00"
   },
   "software": {
     "base": {
@@ -57,7 +57,7 @@
         "package": "python-matplotlib"
       },
       {
-        "package": " poppler-utils"
+        "package": "poppler-utils"
       },
       {
         "package": "libxml2"
@@ -67,9 +67,6 @@
       },
       {
         "package": "python3.7-dev"
-      },
-      {
-        "package": "python3-lxml"
       }
     ],
     "required_modules": [
