@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-03-01T16:28:53+11:00"
+    "timestamp": "2019-03-01T16:29:52+11:00"
   },
   "software": {
     "base": {
@@ -167,7 +167,7 @@
           }
         ],
         "script": {
-          "content": "#!/bin/sh\r\n\r\n  pass=`echo \"from IPython.lib import passwd\r\n  passwd('$notebook_password')\r\n  exit() \" | ipython3  --no-confirm-exit --no-color-info --no-pprint --colors=NoColor |grep sha1 | sed \"/.*sha/s//\\'sha/\"`\r\n  cat ~/.ipython/profile_nbserver/ipython_notebook_config.py | sed \"/^# c.NotebookApp.password.*/s//c.NotebookApp.password=$pass/\" > /tmp/confg\r\n  cp /tmp/confg ~/.ipython/profile_nbserver/ipython_notebook_config.py\r\n echo -n $pass > /home/app/.pass\r\n  echo -n $notebook_password > /home/app/.notebook_password"
+          "content": "#!/bin/sh\r\n\r\n  pass=`echo \"from IPython.lib import passwd\r\n  passwd('$notebook_password')\r\n  exit() \" | ipython3  --no-confirm-exit --no-color-info --no-pprint --colors=NoColor |grep sha1 | sed \"/.*sha/s//\\'sha/\"`\r\n  cat ~/.ipython/jupyter/jupyter_notebook_config.py | sed \"/^# c.NotebookApp.password.*/s//c.NotebookApp.password=$pass/\" > /tmp/confg\r\n  cp /tmp/confg ~/.ipython/jupyter/jupyter_notebook_config.py\r\n  echo -n $pass > /home/app/.pass\r\n  echo -n $notebook_password > /home/app/.notebook_password"
         }
       },
       {
