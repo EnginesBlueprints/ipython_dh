@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-03-01T15:21:39+11:00"
+    "timestamp": "2019-03-01T15:26:24+11:00"
   },
   "software": {
     "base": {
@@ -206,6 +206,14 @@
         "script": {
           "language": "sh",
           "content": "#!/bin/sh\r\n\r\nPATH=$PATH:/home/app/.local/bin/\r\nexport PATH\r\n\r\n\r\n  \r\n     if test -f /home/app/user_modules\r\n       cat /home/app/user_modules\r\n     else\r\n      echo 'No modules'\r\n     fi"
+        }
+      },
+      {
+        "name": "rm_module",
+        "return_type": "plain_text",
+        "script": {
+          "language": "sh",
+          "content": "#!/bin/sh \r\n \r\n if test -f /home/app/user_modules\r\n      then\r\n      cat  /home/app/user_modules | grep -v \"$module\" >  /home/app/user_modules.new\r\n      python3.7 -m pip  uninstall   $module --user\r\n       if test $? -eq 0\r\n       then\r\n        mv /home/app/user_modules.new /home/app/user_modules \r\n      else\r\n       echo failed to remove $module\r\n      fi\r\n    else\r\n     echo no User Modules\r\n fi\r\n \r\n"
         }
       }
     ]
