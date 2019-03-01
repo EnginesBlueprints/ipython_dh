@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-03-01T17:23:39+11:00"
+    "timestamp": "2019-03-01T17:24:32+11:00"
   },
   "software": {
     "base": {
@@ -113,7 +113,6 @@
       },
       {
         "name": "notebook_password ",
-        "mandatory": true,
         "ask_at_build_time": true,
         "build_time_only": true,
         "input": {
@@ -161,7 +160,6 @@
         "variables": [
           {
             "name": "notebook_password",
-            "mandatory": true,
             "input": {
               "type": "password_with_confirmation"
             }
