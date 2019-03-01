@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-03-01T14:55:39+11:00"
+    "timestamp": "2019-03-01T15:13:38+11:00"
   },
   "software": {
     "base": {
@@ -167,7 +167,7 @@
         "name": "show_token",
         "return_type": "plain_text",
         "script": {
-          "content": "#!/bin/sh\r\n/usr/local/bin/jupyter notebook list | cut -f2 -d= |awk '{print $1}'\r\n"
+          "content": "#!/bin/sh\r\n/home/app/.local/bin/jupyter notebook list | cut -f2 -d= |awk '{print $1}'\r\n"
         }
       },
       {
