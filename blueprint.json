@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-03-03T16:05:48+11:00"
+    "timestamp": "2019-03-03T16:14:17+11:00"
   },
   "software": {
     "base": {
@@ -147,15 +147,6 @@
         "build_time_only": true,
         "input": {
           "type": "password_with_confirmation"
-        }
-      },
-      {
-        "name": "python_version",
-        "value": "3.7",
-        "mandatory": true,
-        "immutable": true,
-        "input": {
-          "type": "decimal"
         }
       }
     ],
