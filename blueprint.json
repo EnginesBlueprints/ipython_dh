@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-03-03T16:14:17+11:00"
+    "timestamp": "2019-03-03T17:34:30+11:00"
   },
   "software": {
     "base": {
@@ -70,6 +70,10 @@
       }
     ],
     "required_modules": [
+      {
+        "name": "setuptools",
+        "type": "python"
+      },
       {
         "name": "jsonschema ",
         "type": "python"
@@ -154,7 +158,7 @@
       {
         "path": "/home/app/core_modules",
         "language": "sh",
-        "content": " jsonschema \r\n ipython\r\n jupyter\r\n https://download.pytorch.org/whl/cpu/torch-1.0.1.post2-cp37-cp37m-linux_x86_64.whl\r\n torchvision\r\n flair\r\n diff-pdf-visually"
+        "content": " setuptools\r\n jsonschema \r\n ipython\r\n jupyter\r\n https://download.pytorch.org/whl/cpu/torch-1.0.1.post2-cp37-cp37m-linux_x86_64.whl\r\n torchvision\r\n flair\r\n diff-pdf-visually"
       }
     ],
     "actionators": [
