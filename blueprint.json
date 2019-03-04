@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-03-04T10:21:32+11:00"
+    "timestamp": "2019-03-04T13:09:28+11:00"
   },
   "software": {
     "base": {
@@ -142,7 +142,7 @@
         ],
         "script": {
           "language": "sh",
-          "content": "#!/bin/sh\r\npython3.7 -m pip install --upgrade  $module \r\n if test $? -eq 0\r\n then\r\n    echo  $module > /home/app/user_modules\r\n else\r\n  echo \"Failed to install $module \"\r\n fi"
+          "content": "#!/bin/sh\r\n. /home/app/venv/bin/activate\r\npython3.7 -m pip install --upgrade  $module \r\n if test $? -eq 0\r\n then\r\n    echo  $module > /home/app/user_modules\r\n else\r\n  echo \"Failed to install $module \"\r\n fi"
         }
       },
       {
@@ -157,14 +157,14 @@
           }
         ],
         "script": {
-          "content": "#!/bin/sh\r\n\r\nPATH=$PATH:/home/app/.local/bin/\r\nexport PATH\r\n  pass=`echo \"from IPython.lib import passwd\r\n  passwd('$notebook_password')\r\n  exit() \" | ipython3  --no-confirm-exit --no-color-info --no-pprint --colors=NoColor |grep sha1 | sed \"/.*sha/s//\\'sha/\"`\r\n  cat ~/.ipython/jupyter/jupyter_notebook_config.py | sed \"/^# c.NotebookApp.password.*/s//c.NotebookApp.password=$pass/\" > /tmp/confg\r\n  cp /tmp/confg ~/.ipython/jupyter/jupyter_notebook_config.py\r\n  echo -n $pass > /home/app/.pass\r\n  echo -n $notebook_password > /home/app/.notebook_password"
+          "content": "#!/bin/sh\r\n\r\n. /home/app/venv/bin/activate\r\n\r\n  pass=`echo \"from IPython.lib import passwd\r\n  passwd('$notebook_password')\r\n  exit() \" | ipython3  --no-confirm-exit --no-color-info --no-pprint --colors=NoColor |grep sha1 | sed \"/.*sha/s//\\'sha/\"`\r\n  cat ~/.ipython/jupyter/jupyter_notebook_config.py | sed \"/^# c.NotebookApp.password.*/s//c.NotebookApp.password=$pass/\" > /tmp/confg\r\n  cp /tmp/confg ~/.ipython/jupyter/jupyter_notebook_config.py\r\n  echo -n $pass > /home/app/.pass\r\n  echo -n $notebook_password > /home/app/.notebook_password"
         }
       },
       {
         "name": "show_token",
         "return_type": "plain_text",
         "script": {
-          "content": "#!/bin/sh\r\n/home/app/.local/bin/jupyter notebook list | cut -f2 -d= |awk '{print $1}'\r\n"
+          "content": "#!/bin/sh\r\n. /home/app/venv/bin/activate\r\n \r\njupyter notebook list | cut -f2 -d= |awk '{print $1}'\r\n"
         }
       },
       {
@@ -172,7 +172,7 @@
         "return_type": "plain_text",
         "script": {
           "language": "sh",
-          "content": "#!/bin/sh\r\n\r\nPATH=$PATH:/home/app/.local/bin/\r\nexport PATH\r\n\r\n \r\npython3.7 -m pip install --upgrade pip \r\n\r\nif test -f /home/app/core_modules\r\n then\r\n   for module in `cat /home/app/core_modules`\r\n    do\r\n     echo Updating $module \r\n      python3.7 -m pip  install --upgrade  $module\r\n    done\r\nfi\r\n\r\n"
+          "content": "#!/bin/sh\r\n\r\n. /home/app/venv/bin/activate\r\n \r\npython3.7 -m pip install --upgrade pip \r\n\r\nif test -f /home/app/core_modules\r\n then\r\n   for module in `cat /home/app/core_modules`\r\n    do\r\n     echo Updating $module \r\n      python3.7 -m pip  install --upgrade  $module\r\n    done\r\nfi\r\n\r\n"
         }
       },
       {
@@ -187,7 +187,7 @@
         "name": "update_user_modules",
         "return_type": "plain_text",
         "script": {
-          "content": "#!/bin/sh\r\n\r\nPATH=$PATH:/home/app/.local/bin/\r\nexport PATH\r\n\r\n\r\n  \r\n     if test -f /home/app/user_modules\r\n      then\r\n       for module in `cat /home/app/user_modules`\r\n        do\r\n         echo Updating $module \r\n          python3.7 -m pip  install --upgrade  $module\r\n        done\r\n     fi\r\n"
+          "content": "#!/bin/sh\r\n\r\n\r\n. /home/app/venv/bin/activate\r\n  \r\n     if test -f /home/app/user_modules\r\n      then\r\n       for module in `cat /home/app/user_modules`\r\n        do\r\n         echo Updating $module \r\n          python3.7 -m pip  install --upgrade  $module\r\n        done\r\n     fi\r\n"
         }
       },
       {
@@ -212,7 +212,7 @@
         ],
         "script": {
           "language": "sh",
-          "content": "#!/bin/sh \r\n \r\n if test -f /home/app/user_modules\r\n      then\r\n      cat  /home/app/user_modules | grep -v \"$module\" >  /home/app/user_modules.new\r\n      python3.7 -m pip  uninstall   $module \r\n       if test $? -eq 0\r\n       then\r\n        mv /home/app/user_modules.new /home/app/user_modules \r\n      else\r\n       echo failed to remove $module\r\n      fi\r\n    else\r\n     echo no User Modules\r\n fi\r\n \r\n"
+          "content": "#!/bin/sh \r\n \r\n. /home/app/venv/bin/activate\r\n if test -f /home/app/user_modules\r\n      then\r\n      cat  /home/app/user_modules | grep -v \"$module\" >  /home/app/user_modules.new\r\n      python3.7 -m pip  uninstall   $module \r\n       if test $? -eq 0\r\n       then\r\n        mv /home/app/user_modules.new /home/app/user_modules \r\n      else\r\n       echo failed to remove $module\r\n      fi\r\n    else\r\n     echo no User Modules\r\n fi\r\n \r\n"
         }
       }
     ]
