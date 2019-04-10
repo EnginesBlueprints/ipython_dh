@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-04-10T14:04:42+10:00"
+    "timestamp": "2019-04-10T15:16:13+10:00"
   },
   "software": {
     "base": {
@@ -71,9 +71,9 @@
         "publisher_namespace": "EnginesSystem",
         "type_path": "filesystem/local/filesystem",
         "variables": {
-          "service_name": "_Engines_Builder(engine_name)",
+          "service_name": "notebook",
           "volume_src": "",
-          "engine_path": "/home/app",
+          "engine_path": "",
           "permissions": "rw",
           "user": "_Engines_Builder(data_uid)",
           "group": "_Engines_Builder(data_gid)"
@@ -114,6 +114,12 @@
         "path": "/home/app/core_modules",
         "language": "sh",
         "content": " setuptools\r\n jsonschema \r\n ipython\r\n jupyter\r\n tornado==4.5.3\r\n https://download.pytorch.org/whl/cpu/torch-1.0.1.post2-cp37-cp37m-linux_x86_64.whl\r\n torchvision\r\n flair\r\n diff-pdf-visually"
+      }
+    ],
+    "persistent_directories": [
+      {
+        "path": "/home/app/notebook",
+        "volume_name": "notebook"
       }
     ],
     "actionators": [
