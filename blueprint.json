@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-04-10T15:21:01+10:00"
+    "timestamp": "2019-04-29T09:09:04+10:00"
   },
   "software": {
     "base": {
@@ -37,7 +37,7 @@
       "http_protocol": "https_and_http",
       "framework_port_override": 8888,
       "memory": {
-        "required": 2048,
+        "required": 1024,
         "recommended": 6144
       }
     },
