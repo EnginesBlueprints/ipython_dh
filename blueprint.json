@@ -27,7 +27,7 @@
         "url": "http://opensource.org/licenses/BSD-3-Clause"
       }
     },
-    "timestamp": "2019-04-29T09:09:04+10:00"
+    "timestamp": "2019-10-20T13:31:23+11:00"
   },
   "software": {
     "base": {
@@ -43,7 +43,7 @@
     },
     "scripts": {
       "start": {
-        "content": "#!/bin/sh\r\n\r\n\r\nPATH=$PATH:/home/app/.local/bin/\r\nexport PATH\r\n\r\nif test -f /home/engines/templates/app/core_modules\r\n   then\r\n    cp /home/engines/templates/app/core_modules  /home/app/core_modules \r\nfi\r\n\r\n\r\nif ! test -f /home/app/.have_profile\r\n then\r\n  /home/engines/scripts/actionators/update_core_modules.sh\r\n  mkdir /home/app/notebook\r\n  cd /home/app/notebook\r\n  ipython3 profile create nbserver\r\n  jupyter notebook --generate-config\r\n  touch /home/app/.have_profile\r\n  ls -la /home/app_src/ /home/app\r\nfi\r\n\r\nPID_FILE=/tmp/ipython_notebook.pid\r\nexport PID_FILE\r\n. /home/engines/functions/system_functions.sh\r\nhost=`hostname`\r\nip=`grep $Hostname /etc/hosts |cut -f1 `\r\ncd /home/app/notebook\r\n#result=`jupyter-notebook   --ip=$ip $pass &`\r\nresult=`jupyter-notebook  --no-browser --ip=$ip  --config ~/.jupyter/jupyter_notebook_config.py`\r\npid=$!\r\n\r\necho $result\r\n\r\necho $result |grep token= > /tmp/first_run_url\r\n\r\necho $pid >$PID_FILE\r\nstartup_complete\r\nwait\r\nkill -HUP $pid\r\nshutdown_complete\r\n\r\nexit\r\n"
+        "content": "#!/bin/sh\r\n\r\n\r\nPATH=$PATH:/home/app/.local/bin/\r\nexport PATH\r\n\r\nif test -f /home/engines/templates/app/core_modules\r\n   then\r\n    cp /home/engines/templates/app/core_modules  /home/app/core_modules \r\nfi\r\n\r\n\r\nif ! test -f /home/app/.have_profile\r\n then\r\n  /home/engines/scripts/actionators/update_core_modules.sh\r\n  mkdir /home/app/notebook\r\n  cd /home/app/notebook\r\n  ipython3 profile create nbserver\r\n  jupyter notebook --generate-config\r\n  touch /home/app/.have_profile\r\n  ls -la /home/app_src/ /home/app\r\nfi\r\n\r\nPID_FILE=/tmp/ipython_notebook.pid\r\nexport PID_FILE\r\n. /home/engines/functions/system_functions.sh\r\nhost=`hostname`\r\nip=`grep $Hostname /etc/hosts |cut -f1 `\r\ncd /home/app/notebook\r\n#result=`jupyter-notebook   --ip=$ip $pass &`\r\nresult=`jupyter-notebook  --no-browser --ip=$ip  --config ~/.jupyter/jupyter_notebook_config.py`\r\npid=$!\r\n\r\necho $result\r\n\r\necho $result |grep token= > /tmp/first_run_url\r\n\r\necho $pid >$PID_FILE\r\nstartup_complete\r\nwait\r\nkill -TERM $pid\r\nshutdown_complete\r\n\r\nexit\r\n"
       }
     },
     "system_packages": [
@@ -76,7 +76,9 @@
           "engine_path": "",
           "permissions": "rw",
           "user": "_Engines_Builder(data_uid)",
-          "group": "_Engines_Builder(data_gid)"
+          "group": "_Engines_Builder(data_gid)",
+          "fw_user": "_Engines_Builder(cont_user_id)",
+          "exclude_from_backup": "false"
         }
       },
       {
@@ -100,7 +102,9 @@
           "engine_path": "",
           "permissions": "rw",
           "user": "_Engines_Builder(data_uid)",
-          "group": "_Engines_Builder(data_gid)"
+          "group": "_Engines_Builder(data_gid)",
+          "fw_user": "_Engines_Builder(cont_user_id)",
+          "exclude_from_backup": "false"
         }
       }
     ],
@@ -202,7 +206,7 @@
         "return_type": "plain_text",
         "script": {
           "language": "sh",
-          "content": "#!/bin/sh\r\n\r\nPATH=$PATH:/home/app/.local/bin/\r\nexport PATH\r\n\r\n\r\n  \r\n     if test -f /home/app/user_modules\r\n      then\r\n       cat home/a/pp/user_modules\r\n     else\r\n      echo 'No modules'\r\n     fi"
+          "content": "#!/bin/sh\r\n\r\nPATH=$PATH:/home/app/.local/bin/\r\nexport PATH\r\n\r\n\r\n  \r\n     if test -f /home/app/user_modules\r\n      then\r\n       cat home/app/user_modules\r\n     else\r\n      echo 'No modules'\r\n     fi"
         }
       },
       {
